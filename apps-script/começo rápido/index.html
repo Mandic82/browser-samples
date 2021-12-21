@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+	<meta charset="UTF-8">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="515966861325-7mk1u7jm49c66s7um29cln6jktuj63cq.apps.googleusercontent.com">
+	<meta name="google-signin-client_id" content="515966861325-nmn1ja72951ue5rg9osip0mb41oc7tjc.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
+	<style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,600,700,400);
+ 
+		body {
+        margin: 0;
+        padding: 10%;
+        text-align: center;
+        font-family: 'Open Sans';
+        background: #F8F8F8;
+      }
+ 
+      .user {
+          padding: 50px 20px;
+          background: #FFFFFF;
+          border-radius: 2px;
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          width: 330px;
+          display: block;
+          margin: 0 auto;
+      }
+ 
+      #user-photo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto 10px auto;
+      }
+ 
+      h1 {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        font-weight: lighter;
+      }
+ 
+      #user-name {
+        color: #0066AA;
+        font-weight: bold;
+      }
+ 
+      #user-email {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        color: #0066AA;
+      }
+ 
+      .g-signin2,
+      .g-signin2 .abcRioButton {
+        display: block;
+        margin: 20px auto 0 auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+	<div class="user">
+      <img id="user-anonimo" src="https://mariovalney.com/wp-content/uploads/2015/06/user-anonimo.jpg">
+      <h1>Olá, <span id="user-name">visitante</span>!</h1>
+      <p id="user-email"></p>
+    </div>
+   	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="370" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>
+ 
+    <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      };
+    </script>
+  </body>
+</html>
